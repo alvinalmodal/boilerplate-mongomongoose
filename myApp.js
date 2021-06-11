@@ -1,5 +1,20 @@
-require('dotenv').config();
+require("dotenv").config();
 
+const mongoose = require("mongoose");
+mongoose.connect(
+  `mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@cluster0.wqup4.mongodb.net/retryWrites=true&w=majority`,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    dbName: "freeCodeCamp",
+  }
+);
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", function () {
+  console.log("mongodb connected...");
+});
 
 let Person;
 
