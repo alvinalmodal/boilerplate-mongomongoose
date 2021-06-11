@@ -16,6 +16,14 @@ db.once("open", function () {
   console.log("mongodb connected...");
 });
 
+const { Schema } = mongoose;
+
+const personSchema = new Schema({
+  name: { type: String, required: true },
+  age: { type: Number },
+  favoriteFoods: [{ type: String }],
+});
+
 let Person;
 
 const createAndSavePerson = (done) => {
