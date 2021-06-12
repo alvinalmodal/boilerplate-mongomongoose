@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const { connect } = require("mongodb");
 const mongoose = require("mongoose");
 mongoose.connect(
   `mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@cluster0.wqup4.mongodb.net/freecodecamp?retryWrites=true&w=majority`,
@@ -89,7 +90,7 @@ const removeById = (personId, done) => {
 };
 
 const removeManyPeople = (nameToRemove, done) => {
-  Person.remove({ name: nameToRemove }, done);
+  Person.deleteMany({ name: nameToRemove }, (err, data) => done(err, data));
 };
 
 const queryChain = (done) => {
