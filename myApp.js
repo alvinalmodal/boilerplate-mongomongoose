@@ -94,8 +94,6 @@ const removeManyPeople = (done) => {
   Person.deleteMany({ name: nameToRemove }, (err, data) => done(err, data));
 };
 
-removeManyPeople((err, data) => console.log(err, data));
-
 const queryChain = (done) => {
   const foodToSearch = "burrito";
 
