@@ -100,7 +100,7 @@ const queryChain = (done) => {
     .sort()
     .limit()
     .select()
-    .exec(done);
+    .exec((err, data) => done(err, data));
 };
 
 /** **Well Done !!**
